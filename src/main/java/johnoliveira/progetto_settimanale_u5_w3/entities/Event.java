@@ -39,22 +39,14 @@ public class Event {
     @Column(nullable = false)
     private User creator; // utilizzo lo user per capire chi ha creato l'evento di quelli registrati nel server
 
-    // aggiornare i posti disponibili dopo una prenotazione
-    public void reserveSeat() {
-        if (availableSeats > 0) {
-            this.availableSeats--;
-        } else {
-            throw new IllegalStateException("Nessun posto disponibile!");
-        }
-    }
-
-    // annullare una prenotazione e liberare un posto
-    public void cancelReservation() {
-        if (availableSeats < totalSeats) {
-            this.availableSeats++;
-        } else {
-            throw new IllegalStateException("Non ci sono prenotazioni da annullare!");
-        }
+    public Event(String title, String description, LocalDate date, String location, int totalSeats, int availableSeats, User creator) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.location = location;
+        this.totalSeats = totalSeats;
+        this.availableSeats = availableSeats;
+        this.creator = creator;
     }
 }
 

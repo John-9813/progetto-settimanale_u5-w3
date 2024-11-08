@@ -2,13 +2,12 @@ package johnoliveira.progetto_settimanale_u5_w3.services;
 
 import johnoliveira.progetto_settimanale_u5_w3.entities.User;
 import johnoliveira.progetto_settimanale_u5_w3.exceptions.NotFoundException;
+import johnoliveira.progetto_settimanale_u5_w3.payloads.NewUserDTO;
 import johnoliveira.progetto_settimanale_u5_w3.repositories.UserRepos;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -19,7 +18,7 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     // registra nuovo utente con controlli
-    public User registerUser(User user) throws BadRequestException {
+    public User registerUser(NewUserDTO user) throws BadRequestException {
         // Verifica che l'email non sia già in uso
         if (userRepos.existsByEmail(user.getEmail())) {
 

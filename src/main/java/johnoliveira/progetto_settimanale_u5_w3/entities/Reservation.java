@@ -17,5 +17,11 @@ public class Reservation {
 
     @Column(nullable = false)
     private int numberOfSeats;
+
+    public Reservation(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+
 }
 
