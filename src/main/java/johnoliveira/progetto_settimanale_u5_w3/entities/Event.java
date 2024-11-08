@@ -36,6 +36,8 @@ public class Event {
     @Column(nullable = false)
     private int availableSeats;
 
+    @Column(nullable = false)
+    private User creator; // utilizzo lo user per capire chi ha creato l'evento di quelli registrati nel server
 
     // aggiornare i posti disponibili dopo una prenotazione
     public void reserveSeat() {
