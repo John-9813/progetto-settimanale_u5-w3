@@ -8,6 +8,8 @@ import org.apache.coyote.BadRequestException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -29,6 +31,11 @@ public class UserService {
 
         // Salva
         return userRepos.save(user);
+    }
+
+    // cerca utente tramite id
+    public User findById(Long userId) {
+        return this.userRepos.findById(userId).orElseThrow(() -> new NotFoundException(userId));
     }
 
     // cerca tramite mail con possibile eccezione

@@ -4,4 +4,8 @@ public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {
         super(message);
     }
+
+    public NotFoundException(Long userId) {
+        super("Il record con id" + userId + " non è stato trovato");
+    }
 }
